@@ -1,11 +1,8 @@
 package slayTheMiko.characters;
 
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -81,17 +78,18 @@ public class Yoimiya extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer1.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer2.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer3.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer4.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer5.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer6.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer1d.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer2d.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer3d.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer4d.png",
-            "slayTheMikoResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "slayTheMikoResources/images/char/yoimiya/orb/layer1.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer2.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer3.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer4.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer5.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer6.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer1d.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer2d.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer3d.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer4d.png",
+            "slayTheMikoResources/images/char/yoimiya/orb/layer5d.png",};
+    private static final float[] LAYER_SPEED = new float[]{-64.0F, -32.0F, 0.0F, 16.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -99,18 +97,16 @@ public class Yoimiya extends CustomPlayer {
 
     public Yoimiya(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "slayTheMikoResources/images/char/defaultCharacter/orb/vfx.png", null,
-                new SpriterAnimation(
-                        "slayTheMikoResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                "slayTheMikoResources/images/char/yoimiya/orb/vfx.png", LAYER_SPEED, null, null);
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
-        initializeClass(null, // required call to load textures and setup energy/loadout.
+        initializeClass(YOIMIYA_STANDING_PAINTING, // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                THE_DEFAULT_SHOULDER_2, // campfire pose
-                THE_DEFAULT_SHOULDER_1, // another campfire pose
-                THE_DEFAULT_CORPSE, // dead corpse
+                YOIMIYA_SHOULDER_2, // campfire pose
+                YOIMIYA_SHOULDER_1, // another campfire pose
+                YOIMIYA_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -118,12 +114,12 @@ public class Yoimiya extends CustomPlayer {
 
         // =============== ANIMATIONS =================  
 
-        loadAnimation(
-                THE_DEFAULT_SKELETON_ATLAS,
-                THE_DEFAULT_SKELETON_JSON,
-                1.0f);
-        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
+//        loadAnimation(
+//                THE_DEFAULT_SKELETON_ATLAS,
+//                THE_DEFAULT_SKELETON_JSON,
+//                1.0f);
+//        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
+//        e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
 

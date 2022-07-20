@@ -124,18 +124,19 @@ public class SlayTheMikoMod implements
     private static final String ENERGY_ORB_YOIMIYA_PORTRAIT = "slayTheMikoResources/images/1024/card_yoimiya_orb.png";
 
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "slayTheMikoResources/images/charSelect/YoimiyaButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "slayTheMikoResources/images/charSelect/YoimiyaPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "slayTheMikoResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "slayTheMikoResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "slayTheMikoResources/images/char/defaultCharacter/corpse.png";
+    private static final String SELECT_YOIMIYA_BUTTON = "slayTheMikoResources/images/charSelect/YoimiyaButton.png";
+    private static final String SELECT_YOIMIYA_PORTRAIT_BG = "slayTheMikoResources/images/charSelect/YoimiyaPortraitBG.png";
+    public static final String YOIMIYA_STANDING_PAINTING = "slayTheMikoResources/images/char/yoimiya/standing_painting.png";
+    public static final String YOIMIYA_SHOULDER_1 = "slayTheMikoResources/images/char/yoimiya/shoulder.png";
+    public static final String YOIMIYA_SHOULDER_2 = "slayTheMikoResources/images/char/yoimiya/shoulder2.png";
+    public static final String YOIMIYA_CORPSE = "slayTheMikoResources/images/char/yoimiya/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "slayTheMikoResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "slayTheMikoResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "slayTheMikoResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "slayTheMikoResources/images/char/yoimiya/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "slayTheMikoResources/images/char/yoimiya/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -264,7 +265,7 @@ public class SlayTheMikoMod implements
         logger.info("Beginning to edit characters. " + "Add " + Yoimiya.Enums.YOIMIYA.toString());
 
         BaseMod.addCharacter(new Yoimiya("Yoimiya", Yoimiya.Enums.YOIMIYA),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Yoimiya.Enums.YOIMIYA);
+                SELECT_YOIMIYA_BUTTON, SELECT_YOIMIYA_PORTRAIT_BG, Yoimiya.Enums.YOIMIYA);
 
         receiveEditPotions();
         logger.info("Added " + Yoimiya.Enums.YOIMIYA.toString());
