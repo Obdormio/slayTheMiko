@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -33,8 +34,6 @@ import static slayTheMiko.SlayTheMikoMod.*;
 import static slayTheMiko.characters.Yoimiya.Enums.COLOR_ORANGE;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
-//and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
 public class Yoimiya extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(SlayTheMikoMod.class.getName());
@@ -42,9 +41,7 @@ public class Yoimiya extends CustomPlayer {
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
     // an enum for the name of the player class - IRONCLAD, THE_SILENT, DEFECT, YOUR_CLASS ...
-    // These are all necessary for creating a character. If you want to find out where and how exactly they are used
-    // in the basegame (for fun and education) Ctrl+click on the PlayerClass, CardColor and/or LibraryType below and go down the
-    // Ctrl+click rabbit hole
+    // These are all necessary for creating a character.
 
     public static class Enums {
         @SpireEnum
@@ -73,7 +70,7 @@ public class Yoimiya extends CustomPlayer {
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("DefaultCharacter");
+    private static final String ID = makeID("Yoimiya");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -247,7 +244,7 @@ public class Yoimiya extends CustomPlayer {
     // The class name as it appears next to your player name in-game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-        return NAMES[1];
+        return NAMES[0];
     }
 
     // Should return a new instance of your character, sending name as its name parameter.
@@ -293,7 +290,7 @@ public class Yoimiya extends CustomPlayer {
     // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
-        return TEXT[2];
+        return Vampires.DESCRIPTIONS[0];
     }
 
 }

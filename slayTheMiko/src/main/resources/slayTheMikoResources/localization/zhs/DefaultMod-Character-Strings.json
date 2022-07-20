@@ -1,13 +1,11 @@
 {
-  "slayTheMiko:DefaultCharacter": {
+  "slayTheMiko:Yoimiya": {
     "NAMES": [
-      "The Default",
-      "the Default"
+      "长野原 宵宫"
     ],
     "TEXT": [
-      "THE_DEFAULT exists and is valid. THE_DEFAULT wishes to T o uuuch# NL Second placeholder line of description text.",
-      "NL You TOUCH the heart.",
-      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+      "「长野原烟花店」店长，「夏祭的女王」， NL 将人们的愿望寄托于烟花中的能工巧匠。",
+      "NL “烟花来咯！”"
     ]
   }
 }
