@@ -1,0 +1,53 @@
+{
+  "slayTheMiko:YoimiyaAttack": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "slayTheMiko:YoimiyaBlock": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点格挡。"
+  },
+  "slayTheMiko:YoimiyaAsyncPower": {
+    "NAME": "异步之力",
+    "DESCRIPTION": "获取 !M! 层 slaythemiko:异步 。",
+    "UPGRADE_DESCRIPTION": "获取 !M! 层 slaythemiko:异步 。"
+  },
+  "slayTheMiko:DefaultUncommonAttack": {
+    "NAME": "Big slap",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "slayTheMiko:DefaultUncommonSkill": {
+    "NAME": "A Better Defend",
+    "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
+  },
+  "slayTheMiko:DefaultUncommonPower": {
+    "NAME": "Weirdness",
+    "DESCRIPTION": "Gain X slaythemiko:Keywords.",
+    "UPGRADE_DESCRIPTION": "Gain X +1 slaythemiko:Keywords."
+  },
+  "slayTheMiko:DefaultRareAttack": {
+    "NAME": "TOUCH",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "slayTheMiko:DefaultRareSkill": {
+    "NAME": "For Each Loop x2",
+    "DESCRIPTION": "Apply !M! Vulnerable to all enemies, 2 times.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable to all enemies, 3 times."
+  },
+  "slayTheMiko:DefaultRarePower": {
+    "NAME": "In-Progress Form",
+    "DESCRIPTION": "At the start of your turn, play a TOUCH."
+  },
+  "slayTheMiko:DefaultAttackWithVariable": {
+    "NAME": "Special Strike",
+    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !slayTheMiko:ENERGY_DAMAGE! damage total.)"
+  },
+  "slayTheMiko:DefaultSecondMagicNumberSkill": {
+    "NAME": "Cool 2 Number Card",
+    "DESCRIPTION": "Apply !M! Vulnerable and !slayTheMiko:SecondMagic! poison to an enemy."
+  },
+  "slayTheMiko:OrbSkill": {
+    "NAME": "Get Orb",
+    "DESCRIPTION": "Channel 1 Default Orb."
+  }
+}
