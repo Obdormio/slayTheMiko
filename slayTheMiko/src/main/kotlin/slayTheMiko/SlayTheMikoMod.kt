@@ -75,7 +75,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
             ENABLE_PLACEHOLDER_SETTINGS, "FALSE"
         ) // This is the default setting. It's actually set...
         try {
-            val config = SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings) // ...right here
+            val config = SpireConfig("slayTheMikoMod", "slayTheMikoConfig", theDefaultDefaultSettings) // ...right here
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load() // Load the setting and set the boolean to equal it
             enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS)
@@ -123,7 +123,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
             enablePlaceholder = button.enabled // The boolean true/false will be whether the button is enabled or not
             try {
                 // And based on that boolean, set the settings and save them
-                val config = SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings)
+                val config = SpireConfig("slayTheMikoMod", "slayTheMikoConfig", theDefaultDefaultSettings)
                 config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder)
                 config.save()
             } catch (e: Exception) {
@@ -243,42 +243,41 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
     // ================ /ADD CARDS/ ===================
     // ================ LOAD THE TEXT ===================
     override fun receiveEditStrings() {
-        logger.info("You seeing this?")
         logger.info("Beginning to edit strings for mod with ID: $modID")
 
         // CardStrings
         BaseMod.loadCustomStringsFile(
-            CardStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Card-Strings.json"
+            CardStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Card-Strings.json"
         )
 
         // PowerStrings
         BaseMod.loadCustomStringsFile(
-            PowerStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Power-Strings.json"
+            PowerStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Power-Strings.json"
         )
 
         // RelicStrings
         BaseMod.loadCustomStringsFile(
-            RelicStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Relic-Strings.json"
+            RelicStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Relic-Strings.json"
         )
 
         // Event Strings
         BaseMod.loadCustomStringsFile(
-            EventStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Event-Strings.json"
+            EventStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Event-Strings.json"
         )
 
         // PotionStrings
         BaseMod.loadCustomStringsFile(
-            PotionStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Potion-Strings.json"
+            PotionStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Potion-Strings.json"
         )
 
         // CharacterStrings
         BaseMod.loadCustomStringsFile(
-            CharacterStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Character-Strings.json"
+            CharacterStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Character-Strings.json"
         )
 
         // OrbStrings
         BaseMod.loadCustomStringsFile(
-            OrbStrings::class.java, modID + "Resources/localization/zhs/DefaultMod-Orb-Strings.json"
+            OrbStrings::class.java, modID + "Resources/localization/zhs/SlayTheMikoMod-Orb-Strings.json"
         )
         logger.info("Done editing strings")
     }
@@ -294,7 +293,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
         val gson = Gson()
-        val json = Gdx.files.internal(modID + "Resources/localization/zhs/DefaultMod-Keyword-Strings.json").readString(
+        val json = Gdx.files.internal(modID + "Resources/localization/zhs/SlayTheMikoMod-Keyword-Strings.json").readString(
             StandardCharsets.UTF_8.toString()
         )
         val keywords = gson.fromJson(json, Array<Keyword>::class.java)
