@@ -24,10 +24,7 @@ import slayTheMiko.characters.Yoimiya
 import slayTheMiko.events.IdentityCrisisEvent
 import slayTheMiko.patches.MikoCommand
 import slayTheMiko.potions.PlaceholderPotion
-import slayTheMiko.relics.BottledPlaceholderRelic
-import slayTheMiko.relics.DefaultClickableRelic
-import slayTheMiko.relics.PlaceholderRelic
-import slayTheMiko.relics.PlaceholderRelic2
+import slayTheMiko.relics.*
 import slayTheMiko.util.IDCheckDontTouchPls
 import slayTheMiko.util.TextureLoader
 import slayTheMiko.variables.DefaultCustomVariable
@@ -89,7 +86,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
     override fun receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + Yoimiya.Enums.YOIMIYA.toString())
         BaseMod.addCharacter(
-            Yoimiya("Yoimiya", Yoimiya.Enums.YOIMIYA),
+            Yoimiya("Yoimiya", Yoimiya.Enums.YOIMIYA!!),
             SELECT_YOIMIYA_BUTTON,
             SELECT_YOIMIYA_PORTRAIT_BG,
             Yoimiya.Enums.YOIMIYA
@@ -118,8 +115,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
             FontHelper.charDescFont,  // Position (trial and error it), color, font
             enablePlaceholder,  // Boolean it uses
             settingsPanel,  // The mod panel in which this button will be in
-            {})
-        { button: ModToggleButton ->  // The actual button:
+            {}) { button: ModToggleButton ->  // The actual button:
             enablePlaceholder = button.enabled // The boolean true/false will be whether the button is enabled or not
             try {
                 // And based on that boolean, set the settings and save them
@@ -193,7 +189,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(PlaceholderRelic(), Yoimiya.Enums.COLOR_ORANGE)
+        BaseMod.addRelicToCustomPool(YoimiyaEye(), Yoimiya.Enums.COLOR_ORANGE)
         BaseMod.addRelicToCustomPool(BottledPlaceholderRelic(), Yoimiya.Enums.COLOR_ORANGE)
         BaseMod.addRelicToCustomPool(DefaultClickableRelic(), Yoimiya.Enums.COLOR_ORANGE)
 
@@ -293,9 +289,10 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
         val gson = Gson()
-        val json = Gdx.files.internal(modID + "Resources/localization/zhs/SlayTheMikoMod-Keyword-Strings.json").readString(
-            StandardCharsets.UTF_8.toString()
-        )
+        val json =
+            Gdx.files.internal(modID + "Resources/localization/zhs/SlayTheMikoMod-Keyword-Strings.json").readString(
+                StandardCharsets.UTF_8.toString()
+            )
         val keywords = gson.fromJson(json, Array<Keyword>::class.java)
         if (keywords != null) {
             for (keyword in keywords) {
@@ -318,9 +315,8 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         var modID: String? = null
             private set(ID) {
                 val coolG = Gson()
-                val inputStream =
-                    SlayTheMikoMod::class.java.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json")
-                        ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json") // DON'T EDIT THIS ETHER
+                val inputStream = SlayTheMikoMod::class.java.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json")
+                    ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json") // DON'T EDIT THIS ETHER
                 val exceptionStrings = coolG.fromJson(
                     InputStreamReader(inputStream, StandardCharsets.UTF_8), IDCheckDontTouchPls::class.java
                 ) // OR THIS, DON'T EDIT IT
@@ -419,9 +415,8 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
 
         private fun pathCheck() {
             val coolG = Gson()
-            val inputStream =
-                SlayTheMikoMod::class.java.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json")
-                    ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json")
+            val inputStream = SlayTheMikoMod::class.java.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json")
+                ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json")
             val exceptionStrings = coolG.fromJson(
                 InputStreamReader(inputStream, StandardCharsets.UTF_8), IDCheckDontTouchPls::class.java
             )

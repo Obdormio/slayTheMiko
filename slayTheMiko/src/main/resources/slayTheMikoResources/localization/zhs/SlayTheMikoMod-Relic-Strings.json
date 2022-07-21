@@ -1,9 +1,9 @@
 {
-  "slayTheMiko:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
+  "slayTheMiko:YoimiyaEye": {
+    "NAME": "宵宫的神之眼",
+    "FLAVOR": "既是一瞬，也是永恒。这份短暂的奇迹，便是她给予周围人的「守护」。",
     "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
+      "每回合打出的前 #b2 张牌可以触发即兴 。"
     ]
   },
   "slayTheMiko:PlaceholderRelic2": {
