@@ -36,9 +36,6 @@ import java.util.*
 @SpireInitializer
 class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
     EditCharactersSubscriber, PostInitializeSubscriber {
-    // =============== /MAKE IMAGE PATHS/ =================
-    // =============== /INPUT TEXTURE LOCATION/ =================
-    // =============== SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE =================
     init {
         logger.info("Subscribe to BaseMod hooks")
         BaseMod.subscribe(this)
@@ -94,8 +91,8 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         receiveEditPotions()
         logger.info("Added " + Yoimiya.Enums.YOIMIYA.toString())
     }
-
     // =============== /LOAD THE CHARACTER/ =================
+
     // =============== POST-INITIALIZE =================
     override fun receivePostInitialize() {
         logger.info("Loading badge image and mod options")
@@ -139,11 +136,11 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // If you want an event that's present at any part of the game, simply don't include the dungeon ID
 
         // If you want to have more specific event spawning (e.g. character-specific or so)
-        // deffo take a look at that basemod wiki link as well, as it explains things very in-depth
+        // take a look at that basemod wiki link as well, as it explains things very in-depth
         // btw if you don't provide event type, normal is assumed by default
 
         // Create a new event builder
-        // Since this is a builder these method calls (outside of create()) can be skipped/added as necessary
+        // Since this is a builder these method calls (outside create()) can be skipped/added as necessary
         val eventParams =
             AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent::class.java) // for this specific event
                 .dungeonID(TheCity.ID) // The dungeon (act) this event will appear in
@@ -153,11 +150,10 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // Add the event
         BaseMod.addEvent(eventParams)
 
-        // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options")
     }
-
     // =============== / POST-INITIALIZE/ =================
+
     // ================ ADD POTIONS ===================
     private fun receiveEditPotions() {
         logger.info("Beginning to edit potions")
@@ -175,8 +171,8 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         )
         logger.info("Done editing potions")
     }
-
     // ================ /ADD POTIONS/ ===================
+
     // ================ ADD RELICS ===================
     override fun receiveEditRelics() {
         logger.info("Adding relics")
@@ -185,7 +181,7 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // as well as
         // https://github.com/kiooeht/Bard/blob/e023c4089cc347c60331c78c6415f489d19b6eb9/src/main/java/com/evacipated/cardcrawl/mod/bard/BardMod.java#L319
         // for reference as to how to turn this into an "Auto-Add" rather than having to list every relic individually.
-        // Of note is that the bard mod uses it's own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
+        // Of note is that the bard mod uses its own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
@@ -198,16 +194,15 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        // (the others are all starters so they're marked as seen in the character file)
+        // (the others are all starters, so they're marked as seen in the character file)
         UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID)
         logger.info("Done adding relics!")
     }
-
     // ================ /ADD RELICS/ ===================
+
     // ================ ADD CARDS ===================
     override fun receiveEditCards() {
         logger.info("Adding variables")
-        //Ignore this
         pathCheck()
         // Add the Custom Dynamic Variables
         logger.info("Add variables")
@@ -219,11 +214,11 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
 
-        // This method automatically adds any cards so you don't have to manually load them 1 by 1
+        // This method automatically adds any cards, so you don't have to manually load them 1 by 1
         // For more specific info, including how to exclude cards from being added:
         // https://github.com/daviscook477/BaseMod/wiki/AutoAdd
 
-        // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
+        // The ID for this function isn't actually your mod-id as used for prefixes/by the getModID() method.
         // It's the mod id you give MTS in ModTheSpire.json - by default your artifact ID in your pom.xml
 
         AutoAdd("SlayTheMiko") // ${project.artifactId}
@@ -283,9 +278,9 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
     override fun receiveEditKeywords() {
         // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
         //
-        // Multiword keywords on cards are done With_Underscores
+        // Multi-word keywords on cards are done With_Underscores
         //
-        // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
+        // If you're using multi-word keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
         val gson = Gson()
@@ -305,21 +300,16 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
     }
 
     companion object {
-        // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
-        // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
         val logger: Logger = LogManager.getLogger(SlayTheMikoMod::class.java.name)
 
-        // NO
-        // DOUBLE NO
-        // NU-UH
         var modID: String? = null
             private set(ID) {
                 val coolG = Gson()
                 val inputStream = SlayTheMikoMod::class.java.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json")
-                    ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json") // DON'T EDIT THIS ETHER
+                    ?: throw RuntimeException("Can not find /IDCheckStringsDONT-EDIT-AT-ALL.json")
                 val exceptionStrings = coolG.fromJson(
                     InputStreamReader(inputStream, StandardCharsets.UTF_8), IDCheckDontTouchPls::class.java
-                ) // OR THIS, DON'T EDIT IT
+                )
                 logger.info("You are attempting to set your mod ID as: $ID")
                 field = when (ID) {
                     exceptionStrings.DEFAULTID -> {
@@ -379,8 +369,8 @@ class SlayTheMikoMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSub
         const val BADGE_IMAGE = "slayTheMikoResources/images/Badge.png"
 
         // Atlas and JSON files for the Animations
-//        const val THE_DEFAULT_SKELETON_ATLAS = "slayTheMikoResources/images/char/yoimiya/skeleton.atlas"
-//        const val THE_DEFAULT_SKELETON_JSON = "slayTheMikoResources/images/char/yoimiya/skeleton.json"
+        // const val THE_DEFAULT_SKELETON_ATLAS = "slayTheMikoResources/images/char/yoimiya/skeleton.atlas"
+        // const val THE_DEFAULT_SKELETON_JSON = "slayTheMikoResources/images/char/yoimiya/skeleton.json"
 
         // =============== MAKE IMAGE PATHS =================
         @JvmStatic
